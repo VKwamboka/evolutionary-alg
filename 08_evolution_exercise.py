@@ -101,9 +101,8 @@ def selection_roulette(states : list[State],
     #           to choose k "good" states randomly
     #       The weights should be the deduced using the fitness function
     fitness_values = [f(state) for state in states]
-    
     total_fitness = sum(fitness_values)
-    probabilities = [fitness_val / total_fitness for fitness_val in fitness_values]
+    probabilities = [fitness_val / total_fitness for fitness_val in fitness_values]  
     k = len(states)
     preserved_states = choices(states, probabilities, k=k)  
 
@@ -122,7 +121,7 @@ def recombination(states : list[State]) -> list[State]:
     return new_states
 
 def recombine(state_a : State, state_b : State) -> tuple[State, State]:
-      # Choose 2 random indexes for division barriers
+      #  2 random indexes for division barriers
     idx1, idx2 = sorted([randint(0, len(state_a)-1), randint(0, len(state_a)-1)])
     # recombination
     childstate_a = state_a[:idx1] + state_b[idx1:idx2] + state_a[idx2:]
